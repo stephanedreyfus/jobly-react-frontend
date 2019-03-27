@@ -28,9 +28,22 @@ class JoblyApi {
         }
     }
 
+    /** Ajax call to get one company. => 
+     * { company: { handle, name, num_employees, description, logo_url,
+     *              jobs: [{ id, title, salary, equity }, ...]
+     * }}
+    */
     static async getCompany(handle) {
         let res = await this.request(`companies/${handle}`);
         return res.company;
+    }
+
+    /** Ajax call to get all companies. =>
+     * { companies: [{ handle, name, description, logo_url }, ...} ]}
+    */
+    static async getAllCompanies() {
+        let res = await this.request(`companies/`);
+        return res.companies;
     }
 }
 
