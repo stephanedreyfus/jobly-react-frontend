@@ -16,7 +16,7 @@ class Routes extends Component {
                 <Route exact path="/" render={() => <Home />} />
                 <Route exact path="/companies" render={() => <Companies />} />
                 <Route exact path="/companies/:handle" 
-                       render={rtProps => <Company {...rtProps} />} />
+                       render={rtProps => <Company name={rtProps.match.params.name} />} />
                 <Route exact path="/jobs" render={() => <Jobs />} />
                 <Route exact path="/login" render={() => <Login />} />
                 <Route exact path="/profile" render={() => <Profile />} />
