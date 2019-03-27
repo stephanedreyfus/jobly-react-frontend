@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 class CompanyCard extends Component {
     render () {
         return (
-            <Link to={`/companies/${this.props.name.toLowerCase()}`}>
+            <Link to={`/companies/${this.props.handle}`}>
             <div>
                 <p>{ this.props.name }</p>
                 <p>{ this.props.description }</p>
-                <img src={ this.props.imgUrl } alt='logo' />
+                <img src={ this.props.img_url } alt='logo' />
             </div>
             </Link>
         )

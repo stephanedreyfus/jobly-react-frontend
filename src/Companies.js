@@ -18,7 +18,6 @@ class Companies extends Component {
     /** gets array of companies after mounting to display */
     async componentDidMount() {
         try {
-            debugger
             let companies = await JoblyApi.getAllCompanies();
             this.setState({
                 companies,
@@ -55,7 +54,7 @@ class Companies extends Component {
         let loadMsg = <h1>One moment please...</h1>
         let noCompaniesMsg = <h1>Sorry, no companies match this search.</h1>
         let { loading, error, companies } = this.state;
-        console.log('companies', companies)
+ 
         return (
             <div>
                 {loading ? loadMsg :
@@ -65,9 +64,7 @@ class Companies extends Component {
                             <Search sendSearch={this.getCompanyBySearch} />
                             { companies.map(c => <CompanyCard
                                 key={c.handle}
-                                name={c.name}
-                                description={c.description}
-                                logoUrl={c.logo_url} />)}
+                                {...c} />)}
                         </>
                 }
             </div>
