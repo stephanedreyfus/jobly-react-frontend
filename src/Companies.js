@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+/** component that renders a list of companies as CompanyCard components*/
 class Companies extends Component {
     
     render () {

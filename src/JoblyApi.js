@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+/** class with helper methods to centralize information for AJAX calls, can be called throughout app */
 class JoblyApi {
     static async request(endpoint, paramsOrData = {}, verb = "get") {
         paramsOrData._token = ( // for now, hardcode token for "testuser"

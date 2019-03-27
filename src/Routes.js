@@ -7,6 +7,7 @@ import Jobs from './Jobs';
 import Login from './Login';
 import Profile from './Profile';
 
+/** component that renders pages by route */
 class Routes extends Component {
     
     render () {
