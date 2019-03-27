@@ -41,8 +41,8 @@ class JoblyApi {
     /** Ajax call to get all companies. =>
      * { companies: [{ handle, name, description, logo_url }, ...} ]}
     */
-    static async getAllCompanies() {
-        let res = await this.request(`companies/`);
+    static async getAllCompanies(params) {
+        let res = await this.request('companies/', params);
         return res.companies;
     }
 }

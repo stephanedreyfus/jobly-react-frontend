@@ -5,7 +5,7 @@ class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            searchTerm: ''
+            search: ''
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -17,7 +17,7 @@ class Search extends Component {
 
     handleSubmit(evt) {
         evt.preventDefault();
-        this.props.sendSearch(this.state.searchTerm);
+        this.props.sendSearch(this.state);
     }
 
     render() {
