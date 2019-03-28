@@ -5,7 +5,7 @@ import './JobCard.css';
 class JobCard extends Component {
     render () {
         return (
-            <div nameClass="card">
+            <div className="job-card">
                 <h3>{ this.props.title }</h3>
                 <p>Salary: { this.props.salary }</p>
                 <p>Equity: { this.props.equity }</p>
