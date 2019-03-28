@@ -1,0 +1,11 @@
+.alert-card {
+    /* Add shadows to create the "company-card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border: 2px, orangered;
+    width: 30%;
+    margin: auto;
+    padding: 3px;
+    border-radius: 20px;
+    background-color: rgb(228, 78, 67)
+}
