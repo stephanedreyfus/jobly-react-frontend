@@ -49,26 +49,44 @@ class Companies extends Component {
         }
     }
 
-    render() {
-        let errorMsg = <h1>Something went wrong. Please try again later.</h1>
-        let loadMsg = <h1>One moment please...</h1>
-        let noCompaniesMsg = <h1>Sorry, no companies match this search.</h1>
-        let { loading, error, companies } = this.state;
- 
+    showLoading() {
+        return <h1>One moment please...</h1>
+    }
+
+    showError(searchBar) {
         return (
             <div>
-                {loading ? loadMsg :
-                    error ? errorMsg :
-                        companies.length === 0 ? noCompaniesMsg :
-                        <>
-                            <Search sendSearch={this.getCompanyBySearch} />
-                            { companies.map(c => <CompanyCard
-                                key={c.handle}
-                                {...c} />)}
-                        </>
-                }
+                {searchBar}
+                <h1>Something went wrong. Please try again later.</h1>
             </div>
         );
+    }
+
+    showNoCompanies(searchBar) {
+        return (
+            <div>
+                {searchBar}
+                <h1>Sorry, no companies match this search.</h1>
+            </div>
+        );
+    }
+
+    render() {
+        let { loading, error, companies } = this.state;
+        const searchBar = <Search sendSearch={this.getCompanyBySearch} />
+        if (loading) return this.showLoading();
+        else if (error) return this.showError(searchBar);
+        else if (companies.length === 0) return this.showNoCompanies(searchBar);
+        else {
+            return (
+                <div>
+                                {searchBar}
+                                { companies.map(c => <CompanyCard
+                                    key={c.handle}
+                                    {...c} />)}
+                </div>
+            );
+        }
     }
 }
 
