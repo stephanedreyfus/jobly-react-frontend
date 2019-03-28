@@ -1,9 +1,4 @@
-.searchContainer {
-    width: 100%;
-    position: relative
-  }
-  
-  .searchForm {
+/* .searchForm {
     float: left;
     width: 100%;
     border: 3px solid #00B4CC;
@@ -32,10 +27,9 @@
     font-size: 20px;
   }
 
-  .wrap{
+  .searchContainer {
     width: 30%;
-    position: absolute;
-    top: 10%;
+    position: relative;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
+  } */

@@ -23,18 +23,16 @@ class Search extends Component {
 
     render() {
         return (
-            <div className="wrap">
-            <div className="searchContainer">
-                <form onSubmit={this.handleSubmit}>
-                    <input onChange={this.handleChange}
-                        placeholder="enter search term"
-                        name="search"
-                        id="search"
-                        className='searchForm' />
-                    <button className='searchButton'>Search</button>
-                </form>
-            </div>
-            </div>
+                <div className="searchContainer">
+                    <form onSubmit={this.handleSubmit}>
+                        <input onChange={this.handleChange}
+                            placeholder="enter search term"
+                            name="search"
+                            id="search"
+                            className='searchForm' />
+                        <button className='searchButton'>Search</button>
+                    </form>
+                </div>
         );
     }
 }

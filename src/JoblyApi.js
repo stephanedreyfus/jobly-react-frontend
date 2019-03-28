@@ -3,10 +3,7 @@ import axios from 'axios';
 /** class with helper methods to centralize information for AJAX calls, can be called throughout app */
 class JoblyApi {
     static async request(endpoint, paramsOrData = {}, verb = "get") {
-        paramsOrData._token = ( // for now, hardcode token for "testuser"
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6" +
-            "InRlc3R1c2VyIiwiaXNfYWRtaW4iOmZhbHNlLCJpYXQiOjE1NDE1N" +
-            "jQ2Nzl9.LYDHSkl81gEm7jfHv9wJhzD4ndpuBkSzBan8Nirb6UY");
+        paramsOrData._token = localStorage.getItem('token');
 
         console.debug("API Call:", endpoint, paramsOrData, verb);
 
@@ -52,6 +49,22 @@ class JoblyApi {
     static async getAllJobs(params) {
         let res = await this.request('jobs/', params);
         return res.jobs;
+    }
+
+    /** Ajax call to get a token =>
+     * { token : (JWT String) }
+     */
+    static async login(data) {
+        let res = await this.request('login/', data, 'post');
+        return res;
+    }
+
+    /** Ajax call to register new user, get a token =>
+     * { token : (JWT String) }
+     */
+    static async register(data) {
+        let res = await this.request('users/', data, 'post');
+        return res;
     }
 }
 

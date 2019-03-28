@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Home from './Home';
 import Companies from './Companies';
 import Company from './Company';
@@ -9,6 +9,32 @@ import Profile from './Profile';
 
 /** component that renders pages by route */
 class Routes extends Component {
+
+
+    // ifLoggedin() {
+    //     return (
+    //         <Switch>
+    //             <Route exact path="/" render={() => <Home />} />
+    //             <Route exact path="/companies" render={() => <Companies />} />
+    //             <Route exact path="/companies/:handle" 
+    //                    render={rtProps => <Company handle={rtProps.match.params.handle} />} />
+    //             <Route exact path="/jobs" render={() => <Jobs />} />
+    //             <Route exact path="/login" render={() => <Login />} />
+    //             <Route exact path="/profile" render={() => <Profile />} />
+    //             <Redirect to="/" />
+    //         </Switch>
+    //     );
+    // }
+
+    // ifLoggedOut() {
+    //     return (
+    //     <Switch>
+    //         <Route exact path="/" render={() => <Home />} />
+    //         <Route exact path="/login" render={() => <Login />} />
+    //         <Redirect to="login" />
+    //     </Switch>
+    //     );
+    // }
     
     render () {
         return (
@@ -20,8 +46,9 @@ class Routes extends Component {
                 <Route exact path="/jobs" render={() => <Jobs />} />
                 <Route exact path="/login" render={() => <Login />} />
                 <Route exact path="/profile" render={() => <Profile />} />
+                <Redirect to="/" />
             </Switch>
-        )
+        );
     }
 }
 
