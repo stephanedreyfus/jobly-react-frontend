@@ -27,10 +27,19 @@ class Login extends Component {
         this.setState({ [evt.target.name]: evt.target.value });
     }
 
+    filterFields(fields){
+
+        const acceptableFields = {};
+
+        for (key in fields){
+            if (fields) 
+        }
+    }
+
     async submitRegister(evt) {
         try {
             evt.preventDefault();
-            const { username, password, first_name, last_name, email, photo_url } = this.state;
+            const fieldsToSend = filterFields(this.state);
             let res = await JoblyApi.register({ username, password, first_name, last_name, email, photo_url });
             localStorage.setItem('token', res.token);
             this.props.history.push('/companies/');
