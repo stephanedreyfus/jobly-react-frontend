@@ -9,10 +9,10 @@ class Login extends Component {
         this.state = {
             username: "",
             password: "",
-            first_name: "",
-            last_name: "",
-            email: "",
-            photo_url: "",
+            first_name: undefined,
+            last_name: undefined,
+            email: undefined,
+            photo_url: undefined,
             needsToRegister: false,
             errors: []
         }
@@ -33,6 +33,7 @@ class Login extends Component {
             const { username, password, first_name, last_name, email, photo_url } = this.state;
             let res = await JoblyApi.register({ username, password, first_name, last_name, email, photo_url });
             localStorage.setItem('token', res.token);
+            await this.props.login();
             this.props.history.push('/companies/');
         } catch (error) {
             this.setState({
@@ -40,7 +41,7 @@ class Login extends Component {
             });
         }
     }
-
+    
     showRegisterForm() {
         return (
             <form onSubmit={this.submitRegister}>
