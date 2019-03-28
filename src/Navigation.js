@@ -5,16 +5,40 @@ import './Navigation.css';
 /** class for navigation bar */
 class Navigation extends Component {
 
-    render() {
+    constructor(props) {
+        super(props);
+        this.state = {
+            loggedIn: "token" in localStorage
+        }
+    }
 
+    showLoggedInNav() {
         return (
             <nav>
                 <NavLink exact to='/'>Jobly</NavLink>
                 <NavLink exact to='/companies' >Companies</NavLink>
                 <NavLink exact to='/jobs' >Jobs</NavLink>
                 <NavLink exact to='/profile' >Profile</NavLink>
+                <NavLink exact to='/'>Logout</NavLink>
+            </nav>
+        )
+    }
+
+    showLoggedOutNav() {
+        return (
+            <nav>
+                <NavLink exact to='/'>Jobly</NavLink>
                 <NavLink exact to='/login' >Login</NavLink>
             </nav>
+        )
+    }
+
+    render() {
+
+        return (
+            <div>
+                {this.state.loggedIn ? this.showLoggedInNav() : this.showLoggedOutNav()}
+            </div>
         )
     }
 }
