@@ -44,7 +44,7 @@ class Routes extends Component {
                 <Route exact path="/companies/:handle" 
                        render={rtProps => <Company handle={rtProps.match.params.handle} />} />
                 <Route exact path="/jobs" render={() => <Jobs />} />
-                <Route exact path="/login" render={() => <Login />} />
+                <Route exact path="/login" render={rtProps => <Login history={rtProps.history} />} />
                 <Route exact path="/profile" render={() => <Profile />} />
                 <Redirect to="/" />
             </Switch>
