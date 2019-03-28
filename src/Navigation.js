@@ -5,13 +5,6 @@ import './Navigation.css';
 /** class for navigation bar */
 class Navigation extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            loggedIn: "token" in localStorage
-        }
-    }
-
     showLoggedInNav() {
         return (
             <nav>
@@ -19,7 +12,7 @@ class Navigation extends Component {
                 <NavLink exact to='/companies' >Companies</NavLink>
                 <NavLink exact to='/jobs' >Jobs</NavLink>
                 <NavLink exact to='/profile' >Profile</NavLink>
-                <NavLink exact to='/'>Logout</NavLink>
+                <NavLink exact to='/' ><p onClick={this.props.logout}>Logout</p></NavLink>
             </nav>
         )
     }
@@ -37,7 +30,7 @@ class Navigation extends Component {
 
         return (
             <div>
-                {this.state.loggedIn ? this.showLoggedInNav() : this.showLoggedOutNav()}
+                {this.props.currentUser ? this.showLoggedInNav() : this.showLoggedOutNav()}
             </div>
         )
     }

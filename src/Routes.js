@@ -11,43 +11,35 @@ import Profile from './Profile';
 class Routes extends Component {
 
 
-    // ifLoggedin() {
-    //     return (
-    //         <Switch>
-    //             <Route exact path="/" render={() => <Home />} />
-    //             <Route exact path="/companies" render={() => <Companies />} />
-    //             <Route exact path="/companies/:handle" 
-    //                    render={rtProps => <Company handle={rtProps.match.params.handle} />} />
-    //             <Route exact path="/jobs" render={() => <Jobs />} />
-    //             <Route exact path="/login" render={() => <Login />} />
-    //             <Route exact path="/profile" render={() => <Profile />} />
-    //             <Redirect to="/" />
-    //         </Switch>
-    //     );
-    // }
-
-    // ifLoggedOut() {
-    //     return (
-    //     <Switch>
-    //         <Route exact path="/" render={() => <Home />} />
-    //         <Route exact path="/login" render={() => <Login />} />
-    //         <Redirect to="login" />
-    //     </Switch>
-    //     );
-    // }
-    
-    render () {
+    isLoggedIn() {
         return (
             <Switch>
-                <Route exact path="/" render={() => <Home />} />
+                <Route exact path="/" render={() => <Home currentUser={this.props.currentUser}/>} />
                 <Route exact path="/companies" render={() => <Companies />} />
                 <Route exact path="/companies/:handle" 
                        render={rtProps => <Company handle={rtProps.match.params.handle} />} />
                 <Route exact path="/jobs" render={() => <Jobs />} />
-                <Route exact path="/login" render={rtProps => <Login history={rtProps.history} />} />
                 <Route exact path="/profile" render={() => <Profile />} />
                 <Redirect to="/" />
             </Switch>
+        );
+    }
+
+    isLoggedOut() {
+        return (
+        <Switch>
+            <Route exact path="/" render={() => <Home />} />
+            <Route exact path="/login" render={() => <Login />} />
+            <Redirect to="/login" />
+        </Switch>
+        );
+    }
+    
+    render () {
+        return (
+           <div>
+               { this.props.currentUser ? this.isLoggedIn() : this.isLoggedOut() }
+           </div>
         );
     }
 }

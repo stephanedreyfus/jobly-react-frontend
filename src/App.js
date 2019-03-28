@@ -13,6 +13,7 @@ class App extends Component {
     this.state = {
       currentUser: null
     }
+    this.logout = this.logout.bind(this);
   }
 
   /** rehydrate App with currentUser */
@@ -21,7 +22,7 @@ class App extends Component {
       const token = localStorage.getItem("token")
       const payload = jwt.decode(token);
 
-      const currentUser = JoblyApi.getCurrentUser(payload.username).user;
+      const currentUser = await JoblyApi.getCurrentUser(payload.username);
       currentUser.is_admin = payload.is_admin;
 
       this.setState({
@@ -30,12 +31,17 @@ class App extends Component {
     }
   }
 
+  logout() {
+    localStorage.clear();
+    this.setState({ currentUser: null });
+  } 
+
   render() {
     return (
       <div className="App">
         <BrowserRouter>
-          <Navigation currentUser={this.state.currentUser}/>
-          <Routes currentUser={this.state.currentUser}/> 
+          <Navigation currentUser={this.state.currentUser} logout={this.logout} />
+          <Routes currentUser={this.state.currentUser} /> 
         </BrowserRouter>
       </div>
     );
