@@ -5,7 +5,9 @@
     border: 2px, orangered;
     width: 30%;
     margin: auto;
-    padding: 3px;
+    padding: 1px;
     border-radius: 20px;
-    background-color: rgb(228, 78, 67)
+    font-size: 17px;
+    color: white;
+    background-color: rgb(235, 81, 70)
 }

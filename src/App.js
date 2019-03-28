@@ -37,7 +37,7 @@ class App extends Component {
   }
 
   logout() {
-    localStorage.clear();
+    localStorage.removeItem("token");
     this.setState({ currentUser: null });
   } 
 
