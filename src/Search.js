@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Search.css';
 
 /** search bar component to filter through lists of jobs or companies */
 class Search extends Component {
@@ -22,13 +23,18 @@ class Search extends Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit} >
-                <input onChange={this.handleChange}
-                    placeholder="enter search term"
-                    name="search"
-                    id="search" />
-                <button>Search</button>
-            </form>
+            <div className="wrap">
+            <div className="searchContainer">
+                <form onSubmit={this.handleSubmit}>
+                    <input onChange={this.handleChange}
+                        placeholder="enter search term"
+                        name="search"
+                        id="search"
+                        className='searchForm' />
+                    <button className='searchButton'>Search</button>
+                </form>
+            </div>
+            </div>
         );
     }
 }

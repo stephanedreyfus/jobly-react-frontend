@@ -1,22 +1,19 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
+import './Navigation.css';
 
 /** class for navigation bar */
 class Navigation extends Component {
 
     render() {
-        const activeStyle = {
-            fontWeight: 'bold',
-            color: 'blue'
-        };
 
         return (
             <nav>
                 <NavLink exact to='/'>Jobly</NavLink>
-                <NavLink exact to='/companies' activeStyle={activeStyle} >Companies</NavLink>
-                <NavLink exact to='/jobs' activeStyle={activeStyle} >Jobs</NavLink>
-                <NavLink exact to='/profile' activeStyle={activeStyle} >Profile</NavLink>
-                <NavLink exact to='/login' activeStyle={activeStyle} >Login</NavLink>
+                <NavLink exact to='/companies' >Companies</NavLink>
+                <NavLink exact to='/jobs' >Jobs</NavLink>
+                <NavLink exact to='/profile' >Profile</NavLink>
+                <NavLink exact to='/login' >Login</NavLink>
             </nav>
         )
     }
