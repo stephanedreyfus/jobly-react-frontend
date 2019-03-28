@@ -17,13 +17,13 @@ class Login extends Component {
             errors: []
         }
 
-        this.changeHandler = this.changeHandler.bind(this);
+        this.handleChange = this.handleChange.bind(this);
         this.submitRegister = this.submitRegister.bind(this);
         this.submitLogin = this.submitLogin.bind(this);
         this.toggleNeedsToRegister = this.toggleNeedsToRegister.bind(this);
     }
 
-    changeHandler(evt) {
+    handleChange(evt) {
         this.setState({ [evt.target.name]: evt.target.value });
     }
 
@@ -45,17 +45,17 @@ class Login extends Component {
         return (
             <form onSubmit={this.submitRegister}>
                 <label htmlFor="username">Username: </label>
-                <input id="username" name="username" onChange={this.changeHandler} /><br />
+                <input id="username" name="username" onChange={this.handleChange} /><br />
                 <label htmlFor="password">Password: </label>
-                <input id="password" type="password" name="password" onChange={this.changeHandler} /><br />
+                <input id="password" type="password" name="password" onChange={this.handleChange} /><br />
                 <label htmlFor="first_name">First Name: </label>
-                <input id="first_name" name="first_name" onChange={this.changeHandler} /><br />
+                <input id="first_name" name="first_name" onChange={this.handleChange} /><br />
                 <label htmlFor="last_name">Last Name: </label>
-                <input id="last_name" name="last_name" onChange={this.changeHandler} /><br />
+                <input id="last_name" name="last_name" onChange={this.handleChange} /><br />
                 <label htmlFor="email">Email: </label>
-                <input id="email" name="email" onChange={this.changeHandler} /><br />
+                <input id="email" name="email" onChange={this.handleChange} /><br />
                 <label htmlFor="photo_url">Photo Url: </label>
-                <input id="photo_url" name="photo_url" onChange={this.changeHandler} /><br />
+                <input id="photo_url" name="photo_url" onChange={this.handleChange} /><br />
                 <button>Register</button>
             </form>
         );
@@ -67,9 +67,8 @@ class Login extends Component {
             const { username, password } = this.state;
             let res = await JoblyApi.login({ username, password });
             localStorage.setItem('token', res.token);
-            console.log("Token set")
+            await this.props.login();
             this.props.history.push('/companies/');
-            console.log("Missed going to companies.")
         } catch (error) {
             this.setState({
                 errors: error
@@ -81,9 +80,9 @@ class Login extends Component {
         return (
             <form onSubmit={this.submitLogin}>
                 <label htmlFor="username">Username: </label>
-                <input id="username" name="username" onChange={this.changeHandler} /><br />
+                <input id="username" name="username" onChange={this.handleChange} /><br />
                 <label htmlFor="password">Password: </label>
-                <input id="password" type="password" name="password" onChange={this.changeHandler} /><br />
+                <input id="password" type="password" name="password" onChange={this.handleChange} /><br />
                 <button>Login</button>
             </form>
         );

@@ -29,7 +29,9 @@ class Routes extends Component {
         return (
         <Switch>
             <Route exact path="/" render={() => <Home />} />
-            <Route exact path="/login" render={() => <Login />} />
+            <Route exact path="/login"
+                   render={rtProps => <Login login={this.props.login}
+                                             history={rtProps.history}/>} />
             <Redirect to="/login" />
         </Switch>
         );
