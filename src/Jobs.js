@@ -80,7 +80,8 @@ class Jobs extends Component {
                     {searchBar}
                     {jobs.map(j => <JobCard
                         key={j.id}
-                        {...j} />)}
+                        {...j}
+                        updateUserJobs={this.props.updateUserJobs} />)}
                 </div>
             );
         }

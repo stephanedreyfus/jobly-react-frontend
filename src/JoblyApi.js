@@ -82,6 +82,14 @@ class JoblyApi {
         let res = await this.request(`users/${username}`, data, 'patch');
         return res.user;
     }
+
+    /** Ajax call to post new job to application table. =>
+     * {message: state}
+     */
+    static async applyToJob(username, id) {
+        let res = await this.request(`jobs/${id}/apply`, {username}, 'post')
+        return res;
+    }
 }
 
 export default JoblyApi;

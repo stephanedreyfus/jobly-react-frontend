@@ -16,6 +16,7 @@ class App extends Component {
     this.logout = this.logout.bind(this);
     this.login = this.login.bind(this);
     this.updateUser = this.updateUser.bind(this);
+    this.updateUserJobs = this.updateUserJobs.bind(this);
   }
 
   /** rehydrate App with currentUser */
@@ -46,6 +47,13 @@ class App extends Component {
     this.setState( st => ({ currentUser: { ...st.currentUser, ...user } }))
   }
 
+  updateUserJobs(job) {
+    this.setState( st =>
+      ({ currentUser: {...st.currentUser,
+                      jobs: [ ...st.currentUser.jobs, job] } })
+    );
+  }
+
   render() {
     return (
       <div className="App">
@@ -53,7 +61,8 @@ class App extends Component {
           <Navigation currentUser={this.state.currentUser} logout={this.logout} />
           <Routes currentUser={this.state.currentUser}
                   login={this.login}
-                  updateUser={this.updateUser} /> 
+                  updateUser={this.updateUser}
+                  updateUserJobs={this.updateUserJobs} /> 
         </BrowserRouter>
       </div>
     );
