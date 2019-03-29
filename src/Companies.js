@@ -80,10 +80,10 @@ class Companies extends Component {
         else {
             return (
                 <div>
-                                {searchBar}
-                                { companies.map(c => <CompanyCard
-                                    key={c.handle}
-                                    {...c} />)}
+                    {searchBar}
+                    { companies.map(c => <CompanyCard
+                        key={c.handle}
+                        {...c} />)}
                 </div>
             );
         }

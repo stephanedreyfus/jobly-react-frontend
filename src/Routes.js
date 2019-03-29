@@ -16,9 +16,11 @@ class Routes extends Component {
             <Switch>
                 <Route exact path="/" render={() => <Home currentUser={this.props.currentUser}/>} />
                 <Route exact path="/companies"
-                       render={() => <Companies updateUserJobs={this.props.updateUserJobs}/>} />
+                       render={() => <Companies />} />
                 <Route exact path="/companies/:handle" 
-                       render={rtProps => <Company handle={rtProps.match.params.handle} />} />
+                       render={rtProps => <Company handle={rtProps.match.params.handle} 
+                       currentUser={this.props.currentUser}
+                       updateUserJobs={this.props.updateUserJobs} />} />
                 <Route exact path="/jobs"
                        render={() => <Jobs updateUserJobs={this.props.updateUserJobs} />} />
                 <Route exact path="/profile" render={() => <Profile currentUser={this.props.currentUser} updateUser={this.props.updateUser}/>} />

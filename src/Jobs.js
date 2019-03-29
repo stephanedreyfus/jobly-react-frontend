@@ -41,6 +41,22 @@ class Jobs extends Component {
         }));
     }
 
+    // async componentDidUpdate() {
+    //     try {
+    //         let jobs = await JoblyApi.getAllJobs();
+    //         this.setState({
+    //             jobs,
+    //             loading: false,
+    //             error: false
+    //         });
+    //     } catch {
+    //         this.setState({
+    //             error: true,
+    //             loading: false
+    //         });
+    //     }
+    // }
+
     async getJobsBySearch(search) {
         try {
             let jobs = await JoblyApi.getAllJobs(search);

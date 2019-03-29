@@ -23,19 +23,18 @@ class JobCard extends Component {
         return this.props.state !== nextProps.state;
     }
 
-    // Need to replace "testuse" with currentUser username.
+
     /**  */
     async handleUpdateUserJobs() {
         let {id, company_handle, title} = this.props
         let job = {id, company_handle, title, state:"applied"};
         let res = await JoblyApi.applyToJob(job.id);
         this.props.updateUserJobs(job);
-        this.props.updateJobsList(id);
+        if (this.props.updateJobsList) this.props.updateJobsList(id);
         return res;
     }
 
     render() {
-        console.log(this.props)
         return (
             <div className="job-card">
                 <h3>{this.props.title}</h3>
