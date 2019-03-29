@@ -34,7 +34,7 @@ class App extends Component {
       currentUser.is_admin = payload.is_admin;
 
       this.setState({
-        currentUser
+        currentUser: {...currentUser, jobs: new Set(currentUser.jobs.map(j => j.id))}
       });
   }
 
@@ -47,10 +47,10 @@ class App extends Component {
     this.setState( st => ({ currentUser: { ...st.currentUser, ...user } }))
   }
 
-  updateUserJobs(job) {
+  updateUserJobs(id) {
     this.setState( st =>
       ({ currentUser: {...st.currentUser,
-                      jobs: [ ...st.currentUser.jobs, job] } })
+                      jobs: st.currentUser.jobs.add(id) } })
     );
   }
 

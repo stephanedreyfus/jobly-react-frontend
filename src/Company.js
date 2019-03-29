@@ -30,14 +30,9 @@ class Company extends Component {
         }
     }
 
-    /** Mpa over jobs to collect ids, check to see if user job ids
-     * are in Set of current company job ids. Return proper status
-     * of "applied" or null.
-     */
+    /** checks if job id is found in currentUser.jobs. if so, the job has been applied for */
     checkJobStatus(id) {
-        const jobIds = this.props.currentUser.jobs.map( j => j.id );
-        const jobSet = new Set (jobIds);
-        return jobSet.has(id) ? "applied" : null;
+        return this.props.currentUser.jobs.has(id) ? "applied" : null;
     }
 
     render() {
@@ -58,7 +53,6 @@ class Company extends Component {
                                 equity={j.equity}
                                 id={j.id}
                                 state={this.checkJobStatus(j.id)}
-                                company_handle={this.props.handle}
                                 updateUserJobs={this.props.updateUserJobs} />
                             )}
                         </div>

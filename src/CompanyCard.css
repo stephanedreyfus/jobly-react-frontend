@@ -7,9 +7,24 @@
     margin: auto;
     padding: 3px;
     border-radius: 20px;
+    
 }
   
 /* On mouse-over, add a deeper shadow */
 .company-card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    
+}
+
+a {
+    text-decoration: none;
+    color: rgb(34, 163, 159)
+}
+
+a:visited {
+    color: rgb(34, 163, 159)
+}
+
+a:hover {
+    color: rgb(78, 78, 221);
 }

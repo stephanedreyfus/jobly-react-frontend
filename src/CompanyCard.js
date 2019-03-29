@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './CompanyCard.css'
+import image from './company_icon.png'
 
 /** component shows details about a company */
 class CompanyCard extends Component {
@@ -11,7 +12,7 @@ class CompanyCard extends Component {
                     <div>
                         <p>{ this.props.name }</p>
                         <p>{ this.props.description }</p>
-                        <img src={ this.props.img_url } alt='logo' />
+                        <img src={ this.props.img_url || image } alt='logo' />
                     </div>
                 </Link>
             </div>

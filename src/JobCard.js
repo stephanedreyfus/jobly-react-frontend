@@ -35,11 +35,9 @@ class JobCard extends Component {
      * jobs page to update change in button. */
     async handleUpdateUserJobs() {
         try {
-            let {id, company_handle, title} = this.props
-            let job = {id, company_handle, title, state:"applied"};
-            let res = await JoblyApi.applyToJob(job.id);
-            this.props.updateUserJobs(job);
-            if (this.props.updateJobsList) this.props.updateJobsList(id);
+            let res = await JoblyApi.applyToJob(this.props.id);
+            this.props.updateUserJobs(this.props.id);
+            // if (this.props.updateJobsList) this.props.updateJobsList(id);
             return res;
         } catch(err) {
             this.setState({ error: true });

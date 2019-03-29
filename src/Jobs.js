@@ -13,7 +13,6 @@ class Jobs extends Component {
             error: false
         }
         this.getJobsBySearch = this.getJobsBySearch.bind(this);
-        this.updateJobsList = this.updateJobsList.bind(this);
     }
 
     async componentDidMount() {
@@ -32,30 +31,6 @@ class Jobs extends Component {
         }
     }
 
-    updateJobsList(id) {
-        const jIndex = this.state.jobs.findIndex( j => j.id === id );
-        this.setState( st => ({
-            jobs: [...st.jobs.slice(0, jIndex), 
-                   st.jobs[jIndex] = {...st.jobs[jIndex], 
-                   state: "applied"}, ...st.jobs.slice(jIndex+1)]
-        }));
-    }
-
-    // async componentDidUpdate() {
-    //     try {
-    //         let jobs = await JoblyApi.getAllJobs();
-    //         this.setState({
-    //             jobs,
-    //             loading: false,
-    //             error: false
-    //         });
-    //     } catch {
-    //         this.setState({
-    //             error: true,
-    //             loading: false
-    //         });
-    //     }
-    // }
 
     async getJobsBySearch(search) {
         try {
@@ -94,6 +69,10 @@ class Jobs extends Component {
         );
     }
 
+    checkJobStatus(id) {
+        return this.props.currentUser.jobs.has(id) ? "applied" : null;
+    }
+
     render() {
         let { loading, error, jobs } = this.state;
         const searchBar = <Search sendSearch={this.getJobsBySearch} />
@@ -106,9 +85,12 @@ class Jobs extends Component {
                     {searchBar}
                     {jobs.map(j => <JobCard
                         key={j.id}
-                        {...j}
-                        updateUserJobs={this.props.updateUserJobs}
-                        updateJobsList={this.updateJobsList} />)}
+                        title={j.title}
+                        salary={j.salary}
+                        equity={j.equity}
+                        id={j.id}
+                        state={this.checkJobStatus(j.id)}
+                        updateUserJobs={this.props.updateUserJobs} />)}
                 </div>
             );
         }
