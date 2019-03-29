@@ -5,6 +5,7 @@ import './Navigation.css';
 /** class for navigation bar */
 class Navigation extends Component {
 
+    // Renders links to display if client is logged in as current user.
     showLoggedInNav() {
         return (
             <nav>
@@ -17,6 +18,7 @@ class Navigation extends Component {
         )
     }
 
+    /** Renders links to display if client is not logged in. */
     showLoggedOutNav() {
         return (
             <nav>
@@ -27,7 +29,6 @@ class Navigation extends Component {
     }
 
     render() {
-
         return (
             <div>
                 {this.props.currentUser ? this.showLoggedInNav() : this.showLoggedOutNav()}

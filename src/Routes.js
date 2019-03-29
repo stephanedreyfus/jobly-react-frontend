@@ -10,7 +10,7 @@ import Profile from './Profile';
 /** component that renders pages by route */
 class Routes extends Component {
 
-
+    /** Renders routes to display for clients who are logged in. */
     isLoggedIn() {
         return (
             <Switch>
@@ -24,7 +24,8 @@ class Routes extends Component {
             </Switch>
         );
     }
-
+    
+    /** Renders routes to display for clients who are not logged in. */
     isLoggedOut() {
         return (
         <Switch>

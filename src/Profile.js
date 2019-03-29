@@ -29,6 +29,8 @@ class Profile extends Component {
         this.setState({ [evt.target.name]: evt.target.value });
     }
 
+    /** Filters out fields that contain empty strings from
+     * data that is to be sent to the server */
     filterFields(fields) {
         const fieldsToSend = {};
 
@@ -42,13 +44,14 @@ class Profile extends Component {
         return fieldsToSend;
     }
 
+    /** Prepares fields of changed data to send via Ajax call to server
+     * in order to PATCH current user's profile. Cannnot change password! */
     async updateUser(evt) {
         try {
             evt.preventDefault();
             const { username, first_name, last_name, email, photo_url } = this.state;
             const fieldsToSend = this.filterFields({ first_name, last_name, email, photo_url });
             let updatedUser = await JoblyApi.updateUser(username, fieldsToSend);
-            console.log('got here')
             await this.props.updateUser(updatedUser);
         } catch (error) {
             this.setState({
