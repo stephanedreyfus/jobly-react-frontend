@@ -15,11 +15,15 @@
 
 .apply-button {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    background: rgb(0, 204, 150);
+    background: rgb(158, 207, 238);
     transition: 0.3s;
     border: 2px, slategray;
     width: 25%;
     margin-left: auto;
     padding: 3px;
     border-radius: 4px;
+}
+
+.disabled {
+    background: rgb(0, 204, 150)
 }
