@@ -13,6 +13,7 @@ class Jobs extends Component {
             error: false
         }
         this.getJobsBySearch = this.getJobsBySearch.bind(this);
+        this.updateJobsList = this.updateJobsList.bind(this);
     }
 
     async componentDidMount() {
@@ -29,6 +30,15 @@ class Jobs extends Component {
                 loading: false
             });
         }
+    }
+
+    updateJobsList(id) {
+        const jIndex = this.state.jobs.findIndex( j => j.id === id );
+        this.setState( st => ({
+            jobs: [...st.jobs.slice(0, jIndex), 
+                   st.jobs[jIndex] = {...st.jobs[jIndex], 
+                   state: "applied"}, ...st.jobs.slice(jIndex+1)]
+        }));
     }
 
     async getJobsBySearch(search) {
@@ -81,7 +91,8 @@ class Jobs extends Component {
                     {jobs.map(j => <JobCard
                         key={j.id}
                         {...j}
-                        updateUserJobs={this.props.updateUserJobs} />)}
+                        updateUserJobs={this.props.updateUserJobs}
+                        updateJobsList={this.updateJobsList} />)}
                 </div>
             );
         }

@@ -8,7 +8,7 @@ class JobCard extends Component {
     showApplyButton() {
         return (
             <button className="apply-button"
-            onClick={() => this.handleUpdateUserJobs}>Apply</button>
+            onClick={() => this.handleUpdateUserJobs()}>Apply</button>
         );
     }
 
@@ -19,19 +19,23 @@ class JobCard extends Component {
         );
     }
 
+    shouldComponentUpdate(nextProps) {
+        return this.props.state !== nextProps.state;
+    }
+
     // Need to replace "testuse" with currentUser username.
     /**  */
     async handleUpdateUserJobs() {
-        let {id, company_handle, title, state} = this.props
-        let job = {id, company_handle, title, state};
-        console.log(this.props);
+        let {id, company_handle, title} = this.props
+        let job = {id, company_handle, title, state:"applied"};
+        let res = await JoblyApi.applyToJob(job.id);
         this.props.updateUserJobs(job);
-        let res = await JoblyApi.applyToJob("testuser", job.id);
-        console.log("Job apply result", res);
+        this.props.updateJobsList(id);
         return res;
     }
 
     render() {
+        console.log(this.props)
         return (
             <div className="job-card">
                 <h3>{this.props.title}</h3>
