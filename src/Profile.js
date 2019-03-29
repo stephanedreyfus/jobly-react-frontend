@@ -48,6 +48,7 @@ class Profile extends Component {
             const { username, first_name, last_name, email, photo_url } = this.state;
             const fieldsToSend = this.filterFields({ first_name, last_name, email, photo_url });
             let updatedUser = await JoblyApi.updateUser(username, fieldsToSend);
+            console.log('got here')
             await this.props.updateUser(updatedUser);
         } catch (error) {
             this.setState({
