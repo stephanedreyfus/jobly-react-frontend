@@ -67,8 +67,19 @@ class JoblyApi {
         return res;
     }
 
+    /** Ajax call to get data for current user =>
+     * {user { username, first_name, last_name, email, photo_url, jobs: [] }}
+     */
     static async getCurrentUser(username) {
         let res = await this.request(`users/${username}`);
+        return res.user;
+    }
+
+    /** Ajax call to update data for current user =>
+     * {user { username, first_name, last_name, email, photo_url }}
+     */
+    static async updateUser(username, data) {
+        let res = await this.request(`users/${username}`, data, 'patch');
         return res.user;
     }
 }

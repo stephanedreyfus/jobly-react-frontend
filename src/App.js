@@ -15,6 +15,7 @@ class App extends Component {
     }
     this.logout = this.logout.bind(this);
     this.login = this.login.bind(this);
+    this.updateUser = this.updateUser.bind(this);
   }
 
   /** rehydrate App with currentUser */
@@ -39,14 +40,20 @@ class App extends Component {
   logout() {
     localStorage.removeItem("token");
     this.setState({ currentUser: null });
-  } 
+  }
+
+  updateUser(user) {
+    this.setState( st => ({ currentUser: { ...st.currentUser, ...user } }))
+  }
 
   render() {
     return (
       <div className="App">
         <BrowserRouter>
           <Navigation currentUser={this.state.currentUser} logout={this.logout} />
-          <Routes currentUser={this.state.currentUser} login={this.login} /> 
+          <Routes currentUser={this.state.currentUser}
+                  login={this.login}
+                  updateUser={this.updateUser} /> 
         </BrowserRouter>
       </div>
     );
