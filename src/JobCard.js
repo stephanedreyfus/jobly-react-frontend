@@ -9,7 +9,7 @@ class JobCard extends Component {
                 <h3>{ this.props.title }</h3>
                 <p>Salary: { this.props.salary }</p>
                 <p>Equity: { this.props.equity }</p>
-                <p>button should be here: { this.props.status }</p>
+                <button className="apply-button">Apply{ this.props.state }</button>
             </div>
         )
     }
